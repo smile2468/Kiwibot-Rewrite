@@ -599,16 +599,16 @@ class General(commands.Cog):
         em = discord.Embed(colour=0xff78cb)
         em.add_field(name='정말로 이 메시지를 보내시겠습니까?', value='이 메시지를 보낼것을 동의하면 봇 관리진에게 이 메시지가 전달됩니다. 그리고 이 모든 말의 책임은 모두 본인에게 있으며, 욕설등의 언행을 하실경우 불이익이 발생될수도 있습니다. 정말 보내시겠습니까?')
         a = await ctx.send(author.mention, embed=em)
-        await a.add_reaction('⭕')
-        await a.add_reaction('❌')
-        asdf = ['⭕', '❌']
+        await a.add_reaction('👉')
+        await a.add_reaction('👌')
+        asdf = ['👉', '👌']
         def check(reaction, user):
             if user == ctx.author and str(reaction.emoji) in asdf: 
                 return True 
         try:
             reaction, user = await self.bot.wait_for('reaction_add', timeout=30.0, check=check)
         except asyncio.TimeoutError:
-            return await a.edit(content='> 시간초과로 인해 취소되었습니다!')
+            return await a.edit(content='> 👉👌 핫.. 가버렸다..💓')
         await a.delete()
         if True:
             em2 = discord.Embed(colour=discord.Colour.gold(), title='봇 문의 | BOT CONTACT', timestamp=datetime.datetime.utcnow())
@@ -637,7 +637,7 @@ class General(commands.Cog):
             em = discord.Embed(colour=discord.Colour.green())
             em.add_field(name='지원되는 언어:', value='\n'.join(a), inline=False)
             em.add_field(name='사용방법', value=f'{ctx.prefix}translate en 안녕하세요', inline=False)
-            await ctx.send(f'{ctx.author.mention}, 🔴 잘못된 사용 방법입니다!', embed=em)
+            await ctx.send(f'{ctx.author.mention}, 🔴 잘못된 사용 방법임 ㅇㅇ', embed=em)
 
     @translate.command(no_pm=True, name='en', description='Papago command that translates into English! | 영어로 번역해주는 파파고 명령어입니다!')
     async def en(self, ctx, *, message=None):
